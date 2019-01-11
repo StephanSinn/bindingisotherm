@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+
+        <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Binding Isotherm for a direct Host Guest Interactions</h2>
+
+        <div>
+
+          <table class="steelBlueCols">
+            <tr>
+              <th>[Host]<sub>0</sub> / M </th>
+              <th>[Dye]<sub>0</sub> / M</th>
+              <th> Ka / M <sup>-1</sup></th>
+            </tr>
+            <tr>
+              <td><input type="text" name="" value="" id="hostInput"></td>
+              <td><input type="text" name="" value="" id="dyeInput"></td>
+              <td><input type="text" name="" value="" id="bindingInput"></td>
+            </tr>
+            <tr>
+              <td><button type="button" name="calculate" id="calculate" onclick="">Calculate</button></td>
+            </tr>
+          </table>
+
+        </div>
+
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
+
+
+
+          <table class="output">
+            <tr>
+              <th>Species</th>
+              <th>Data</th>
+            </tr>
+            <tr>
+              <th>[H]<sub>0</sub></th>
+              <td id='output'></td>
+            </tr>
+            <tr>
+              <th>[HD]</th>
+              <td id='output2'></td>
+            </tr>
+            <tr>
+              <th>[H]</th>
+              <td id='output3'></td>
+            </tr>
+            <tr>
+              <th>[D]</th>
+              <td id='output4'></td>
+            </tr>
+          </table>
+
+
+    </div>
+
+
+<script src="chartScript.js"></script>
+  </body>
+
+</html>
