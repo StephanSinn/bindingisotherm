@@ -42,6 +42,22 @@ let chartJSon =  {
       data: out,
       backgroundColor: "rgba(255,153,0,0.6)"
     }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Concentration at equilibrium'
+        }
+      }],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Concentration of Host'
+        }
+      }]
+    }
   }
 };
 

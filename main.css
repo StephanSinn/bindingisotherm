@@ -9,6 +9,10 @@
 
 }
 
+.heading1{
+  text-align: center;
+}
+
 .graph-container{
   width: 80%;
   height: 40%;
@@ -19,7 +23,9 @@
 
 }
 
-
+.dataTable {
+  text-align: center;
+}
 
 table.steelBlueCols {
   border: 4px solid #555555;
@@ -27,6 +33,7 @@ table.steelBlueCols {
   width: 400px;
   text-align: center;
   border-collapse: collapse;
+  display: inline-table;
 }
 table.steelBlueCols td, table.steelBlueCols th {
   border: 1px solid #555555;
