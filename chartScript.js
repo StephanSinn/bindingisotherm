@@ -1,6 +1,6 @@
 var ctx = document.getElementById('results-graph').getContext('2d');
 let searchNumber=1;
-
+var ctxdoc = document.getElementById('results-graph-doc').getContext('2d');
 
 
 var resetCanvas = function(){
@@ -14,6 +14,19 @@ var resetCanvas = function(){
   ctx.font = '10pt Verdana';
   ctx.textAlign = 'center';
   ctx.fillText('This text is centered on the canvas', x, y);
+};
+
+var resetCanvas2 = function(){
+  $('#results-graph-doc').remove(); // this is my <canvas> element
+  $('#graph-container-doc').append('<canvas id="results-graph-doc"><canvas>');
+  canvas = document.querySelector('#results-graph-doc');
+  ctxdoc = canvas.getContext('2d');
+
+  var x = canvas.width;
+  var y = canvas.height;
+  ctxdoc.font = '10pt Verdana';
+  ctxdoc.textAlign = 'center';
+  ctxdoc.fillText('This text is centered on the canvas', x, y);
 };
 
 let d=0;
@@ -44,6 +57,7 @@ let chartJSon =  {
     }]
   },
   options: {
+    title: {display:true,text:'Equilibrium Concentration', fontSize: 30,fontFamily: "Open Sans"},
     scales: {
       yAxes: [{
         ticks:{
@@ -72,6 +86,57 @@ let chartJSon =  {
     }
   }
 };
+
+
+let chartJSonDoC =  {
+  type: 'line',
+  data: {
+    labels: out,
+    datasets: [{
+      label: 'HD',
+      data: out,
+      backgroundColor: "rgba(153,255,51,0.6)"
+    },{
+      label: 'H',
+      data: out,
+      backgroundColor: "rgba(51, 139, 255, 0.6)"
+    }, {
+      label: 'D',
+      data: out,
+      backgroundColor: "rgba(255,153,0,0.6)"
+    }]
+  },
+  options: {
+    title: {display:true,text:'Degree of Complexation', fontSize: 30,fontFamily: "Open Sans"},
+    scales: {
+      yAxes: [{
+        ticks:{
+          fontFamily: "Open Sans",
+          fontSize: 16
+        },
+        scaleLabel: {
+          fontFamily: "Open Sans",
+          fontSize: 16,
+          display: true,
+          labelString: 'Concentration at equilibrium'
+        }
+      }],
+      xAxes: [{
+          ticks:{
+            fontFamily: "Open Sans",
+            fontSize: 16
+          },
+          scaleLabel: {
+          fontFamily: "Open Sans",
+          fontSize: 16,
+          display: true,
+          labelString: 'Concentration of Host'
+        }
+      }]
+    }
+  }
+};
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -122,6 +187,18 @@ document.addEventListener("DOMContentLoaded", function() {
       arr[index]=d-pr;
     };
 
+    function DmyDoCFunction(item, index, arr){
+      arr[index]=item/d;
+    };
+
+    function HmyDoCFunction(item, index, arr){
+      arr[index]=item/h;
+    };
+
+    function HDmyDoCFunction(item, index, arr){
+      arr[index]=item/d;
+    };
+
     let  outX = Array.from(Array(51), (_,x) => fun1(x));
     let  outHD = Array.from(Array(51), (_,x) => fun1(x));
     let  outH = Array.from(Array(51), (_,x) => fun1(x));
@@ -133,27 +210,43 @@ document.addEventListener("DOMContentLoaded", function() {
 
     outX.forEach(myXFunction);
     chartJSon.data.labels=outX;
-    outputField.innerHTML = chartJSon.data.labels;
+    let outXDoC=outX.slice(0);
+    chartJSonDoC.data.labels=outXDoC;
+    outputField.innerHTML = outXDoC;
 
     outHD.forEach(myXFunction);
     outHD.forEach(myHDFunction);
     chartJSon.data.datasets[0].data=outHD;
     outputField2.innerHTML = chartJSon.data.datasets[0].data;
+    let outHDcopy=outHD.slice(0);
+    outHDcopy.forEach(HDmyDoCFunction);
+    chartJSonDoC.data.datasets[0].data=outHDcopy;
+    outputField2.innerHTML = outHDcopy;
+
 
     outH.forEach(myXFunction);
     outH.forEach(myHFunction);
     chartJSon.data.datasets[1].data=outH;
     outputField3.innerHTML = chartJSon.data.datasets[1].data;
+    let outHcopy=outH.slice(0);
+    outHcopy.forEach(HmyDoCFunction);
+    chartJSonDoC.data.datasets[1].data=outHcopy;
+    outputField3.innerHTML = outHcopy;
+
 
     outD.forEach(myXFunction);
     outD.forEach(myDFunction);
     chartJSon.data.datasets[2].data=outD;
     outputField4.innerHTML = chartJSon.data.datasets[2].data;
-
-
-
+    let outDcopy=outD.slice(0);
+    outDcopy.forEach(DmyDoCFunction);
+    chartJSonDoC.data.datasets[2].data=outDcopy;
+    outputField4.innerHTML = outDcopy;
+    resetCanvas2();
     resetCanvas();
     var myChart = new Chart(ctx,chartJSon);
+    var myChartDoC = new Chart(ctxdoc,chartJSonDoC);
+
     });
 
 });

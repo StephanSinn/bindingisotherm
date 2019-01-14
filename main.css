@@ -20,7 +20,15 @@
   font-size: 28px;
   align-items: center;
   align-content: center;
+}
 
+.graph-container-doc{
+  width: 80%;
+  height: 40%;
+  margin: 15px auto;
+  font-size: 28px;
+  align-items: center;
+  align-content: center;
 }
 
 .dataTable {
