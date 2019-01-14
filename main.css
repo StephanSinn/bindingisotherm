@@ -1,13 +1,25 @@
-
-
 .container {
   width: 80%;
+  height: 40%;
   margin: 15px auto;
   font-size: 28px;
   align-items: center;
   align-content: center;
-  
+
+
 }
+
+.graph-container{
+  width: 80%;
+  height: 40%;
+  margin: 15px auto;
+  font-size: 28px;
+  align-items: center;
+  align-content: center;
+
+}
+
+
 
 table.steelBlueCols {
   border: 4px solid #555555;

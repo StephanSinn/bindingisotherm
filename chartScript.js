@@ -1,12 +1,26 @@
-var ctx = document.getElementById('myChart').getContext('2d');
+var ctx = document.getElementById('results-graph').getContext('2d');
 let searchNumber=1;
 
+
+
+var resetCanvas = function(){
+  $('#results-graph').remove(); // this is my <canvas> element
+  $('#graph-container').append('<canvas id="results-graph"><canvas>');
+  canvas = document.querySelector('#results-graph');
+  ctx = canvas.getContext('2d');
+
+  var x = canvas.width;
+  var y = canvas.height;
+  ctx.font = '10pt Verdana';
+  ctx.textAlign = 'center';
+  ctx.fillText('This text is centered on the canvas', x, y);
+};
 
 let d=0;
 let ka=1;
 let h=1;
 const fun1 = x=> x;
-let out = Array.from(Array(50), (_,x) => fun1(x));
+let out = Array.from(Array(51), (_,x) => fun1(x));
 
 
 
@@ -80,10 +94,10 @@ document.addEventListener("DOMContentLoaded", function() {
       arr[index]=d-pr;
     };
 
-    let  outX = Array.from(Array(50), (_,x) => fun1(x));
-    let  outHD = Array.from(Array(50), (_,x) => fun1(x));
-    let  outH = Array.from(Array(50), (_,x) => fun1(x));
-    let  outD = Array.from(Array(50), (_,x) => fun1(x));
+    let  outX = Array.from(Array(51), (_,x) => fun1(x));
+    let  outHD = Array.from(Array(51), (_,x) => fun1(x));
+    let  outH = Array.from(Array(51), (_,x) => fun1(x));
+    let  outD = Array.from(Array(51), (_,x) => fun1(x));
 
     d=+dyeInput.value;
     h=+hostInput.value;
@@ -108,6 +122,9 @@ document.addEventListener("DOMContentLoaded", function() {
     chartJSon.data.datasets[2].data=outD;
     outputField4.innerHTML = chartJSon.data.datasets[2].data;
 
+
+
+    resetCanvas();
     var myChart = new Chart(ctx,chartJSon);
     });
 
