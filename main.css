@@ -5,7 +5,7 @@
   font-size: 28px;
   align-items: center;
   align-content: center;
-
+  font-family: "Open Sans"
 
 }
 
@@ -25,12 +25,13 @@
 
 .dataTable {
   text-align: center;
+
 }
 
 table.steelBlueCols {
   border: 4px solid #555555;
   background-color: rgba(#ffffff, 0);
-  width: 400px;
+  width: 800px;
   text-align: center;
   border-collapse: collapse;
   display: inline-table;

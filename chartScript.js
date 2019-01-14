@@ -46,13 +46,25 @@ let chartJSon =  {
   options: {
     scales: {
       yAxes: [{
+        ticks:{
+          fontFamily: "Open Sans",
+          fontSize: 16
+        },
         scaleLabel: {
+          fontFamily: "Open Sans",
+          fontSize: 16,
           display: true,
           labelString: 'Concentration at equilibrium'
         }
       }],
       xAxes: [{
-        scaleLabel: {
+          ticks:{
+            fontFamily: "Open Sans",
+            fontSize: 16
+          },
+          scaleLabel: {
+          fontFamily: "Open Sans",
+          fontSize: 16,
           display: true,
           labelString: 'Concentration of Host'
         }
