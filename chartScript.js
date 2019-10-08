@@ -43,7 +43,7 @@ let chartJSon =  {
   data: {
     labels: out,
     datasets: [{
-      label: 'HD',
+      label: '[HD]',
       data: out,
       backgroundColor: "rgba(153,255,51,0.6)"
     },{
