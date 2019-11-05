@@ -62,7 +62,7 @@ let chartJSon =  {
       yAxes: [{
         ticks:{
           fontFamily: "Open Sans",
-          fontSize: 16,
+          fontSize: 16
 
         },
         gridLines: {
@@ -137,7 +137,7 @@ let chartJSonDoC =  {
       yAxes: [{
         ticks:{
           fontFamily: "Open Sans",
-          fontSize: 16,
+          fontSize: 16
 
         },
         gridLines: {
